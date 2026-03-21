@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>義警電子簽到系統 - 成功派出所</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #1a237e;
+            --dark-blue: #0d1442;
+            --accent-gold: #d4af37;
+            --success-green: #2e7d32;
+            --text-dark: #1a1a2e;
+            --text-light: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a237e 0%, #0d1442 50%, #1a1a2e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container { width: 100%; max-width: 500px; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: linear-gradient(145deg, var(--accent-gold), #b8962e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            font-size: 36px;
+        }
+
+        .header h1 {
+            color: var(--text-light);
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .header .subtitle {
+            color: var(--accent-gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .signin-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .signin-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold), var(--primary-blue));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .time-display {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .current-date { color: #f5e6b8; font-size: 14px; }
+        .current-time { color: var(--text-light); font-size: 38px; font-weight: 900; }
+
+        .form-group { margin-bottom: 18px; }
+
+        .form-group label {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .form-group label::before { content: '▸ '; color: var(--accent-gold); }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 16px;
+            background: #fafafa;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: #fff;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a237e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .form-group.readonly input { background: #f0f0f0; color: #555; }
+
+        .location-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 18px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .location-info .label { color: #666; font-size: 12px; font-weight: 600; }
+        .location-info .value { color: var(--text-dark); font-size: 13px; margin-top: 4px; }
+
+        .location-status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; }
+        .location-status.loading::before {
+            content: '';
+            width: 14px; height: 14px;
+            border: 2px solid #ddd;
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .location-status.success { color: var(--success-green); }
+        .location-status.success::before { content: '✓'; font-weight: bold; }
+        .location-status.error { color: #c62828; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .signin-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--text-light);
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+
+        .signin-btn:hover { opacity: 0.95; transform: translateY(-1px); }
+        .signin-btn:disabled { background: #9e9e9e; cursor: not-allowed; }
+
+        .signout-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #c62828, #8e0000);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, var(--success-green), #1b5e20);
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .success-message.show { display: block; }
+        .success-message h3 { font-size: 18px; margin-bottom: 5px; }
+
+        .records-section {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #e0e0e0;
+            display: none;
+        }
+
+        .records-section.show { display: block; }
+        .records-section h4 { font-size: 14px; margin-bottom: 12px; }
+        .records-section h4::before { content: '📋 '; }
+
+        .record-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .record-item .type { font-weight: 700; color: var(--primary-blue); }
+        .record-item .type.signout { color: #c62828; }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+        }
+
+        /* QR Scanner */
+        .qr-section { margin-bottom: 20px; }
+        .qr-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00695c, #004d40);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .qr-btn.active { background: linear-gradient(135deg, #c62828, #8e0000); }
+        #qr-reader { width: 100%; margin-top: 10px; display: none; }
+
+        @media (max-width: 480px) {
+            .header h1 { font-size: 22px; }
+            .current-time { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="badge-icon">⭐</div>
+            <h1>義警電子簽到</h1>
+            <div class="subtitle">成功派出所</div>
+        </div>
+
+        <div class="signin-card">
+            <div class="time-display">
+                <div class="current-date" id="currentDate">載入中...</div>
+                <div class="current-time" id="currentTime">--:--:--</div>
+            </div>
+
+            <!-- QR Scanner -->
+            <div class="qr-section">
+                <button type="button" class="qr-btn" id="qrBtn" onclick="toggleQR()">
+                    📷 掃描 QR Code 設定連結
+                </button>
+                <div id="qr-reader"></div>
+            </div>
+
+            <!-- 使用 Google Forms 風格的表單提交 -->
+            <form id="signinForm" target="submitFrame" method="POST" action="">
+                <input type="hidden" name="timestamp" id="timestamp">
+                <input type="hidden" name="date" id="date">
+                <input type="hidden" name="time" id="time">
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
+                <input type="hidden" name="accuracy" id="accuracy">
+
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input type="text" name="name" id="name" placeholder="請輸入您的姓名" required>
+                </div>
+
+                <div class="form-group readonly">
+                    <label>職稱</label>
+                    <input type="text" name="rank" id="rank" value="義警" readonly>
+                </div>
+
+                <div class="form-group readonly">
+                    <label>單位</label>
+                    <input type="text" name="unit" id="unit" value="成功派出所" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>簽到類型</label>
+                    <select name="checkType" id="checkType" required>
+                        <option value="上班簽到">上班簽到</option>
+                        <option value="下班簽退">下班簽退</option>
+                        <option value="勤務簽到">勤務簽到</option>
+                        <option value="勤務簽退">勤務簽退</option>
+                        <option value="會議簽到">會議簽到</option>
+                        <option value="訓練簽到">訓練簽到</option>
+                    </select>
+                </div>
+
+                <div class="location-info">
+                    <div class="label">📍 GPS 定位</div>
+                    <div class="location-status loading" id="locationStatus">正在取得位置...</div>
+                    <div class="value" id="locationValue" style="display:none;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>備註</label>
+                    <input type="text" name="remark" id="remark" placeholder="選填">
+                </div>
+
+                <button type="submit" class="signin-btn" id="signinBtn">立即簽到</button>
+                <button type="submit" class="signout-btn" id="signoutBtn" style="display:none;">確認簽退</button>
+            </form>
+
+            <div class="success-message" id="successMsg">
+                <h3>✓ 簽到成功</h3>
+                <p id="successDetail"></p>
+            </div>
+
+            <div class="records-section" id="recordsSection">
+                <h4>本次記錄</h4>
+                <div id="recordsList"></div>
+            </div>
+        </div>
+
+        <div class="footer">義警電子簽到系統 v3.0</div>
+    </div>
+
+    <!-- 隱藏的 iframe 接收表單提交結果 -->
+    <iframe name="submitFrame" id="submitFrame" style="display:none;"></iframe>
+
+    <script>
+        // ===== 設定 =====
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby81LEU2VkjbP42cvD_hXd7b7V_M6W2Bxo6TfrmDl9KgQvMaYTbDfn0zNlqmiFuJVdO/exec';
+        
+        // 設定表單 action
+        document.getElementById('signinForm').action = WEB_APP_URL;
+
+        // ===== 時間 =====
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-TW', {
+                year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'
+            });
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('zh-TW', { hour12: false });
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // ===== GPS =====
+        let gpsData = { lat: '', lng: '', acc: '' };
+
+        function getLocation() {
+            const status = document.getElementById('locationStatus');
+            const value = document.getElementById('locationValue');
+
+            if (!navigator.geolocation) {
+                status.className = 'location-status error';
+                status.textContent = '不支援定位';
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    gpsData.lat = pos.coords.latitude;
+                    gpsData.lng = pos.coords.longitude;
+                    gpsData.acc = Math.round(pos.coords.accuracy);
+                    
+                    status.className = 'location-status success';
+                    status.textContent = '定位成功';
+                    value.style.display = 'block';
+                    value.textContent = `${gpsData.lat.toFixed(6)}, ${gpsData.lng.toFixed(6)}`;
+                },
+                () => {
+                    status.className = 'location-status error';
+                    status.textContent = '定位失敗（不影響簽到）';
+                },
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
+        getLocation();
+
+        // ===== 載入姓名 =====
+        const savedName = localStorage.getItem('userName');
+        if (savedName) document.getElementById('name').value = savedName;
+
+        // ===== 簽到類型切換 =====
+        document.getElementById('checkType').addEventListener('change', function() {
+            const isSignout = this.value.includes('簽退');
+            document.getElementById('signinBtn').style.display = isSignout ? 'none' : 'block';
+            document.getElementById('signoutBtn').style.display = isSignout ? 'block' : 'none';
+        });
+
+        // ===== 記錄 =====
+        let records = [];
+        function addRecord(type, time) {
+            records.unshift({ type, time });
+            const section = document.getElementById('recordsSection');
+            const list = document.getElementById('recordsList');
+            section.classList.add('show');
+            list.innerHTML = records.map(r => `
+                <div class="record-item">
+                    <span class="type ${r.type.includes('簽退') ? 'signout' : ''}">${r.type}</span>
+                    <span class="time">${r.time}</span>
+                </div>
+            `).join('');
+        }
+
+        // ===== 表單提交 =====
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                e.preventDefault();
+                alert('請輸入姓名');
+                return;
+            }
+
+            // 儲存姓名
+            localStorage.setItem('userName', name);
+
+            // 填入隱藏欄位
+            const now = new Date();
+            document.getElementById('timestamp').value = now.toISOString();
+            document.getElementById('date').value = now.toLocaleDateString('zh-TW');
+            document.getElementById('time').value = now.toLocaleTimeString('zh-TW', { hour12: false });
+            document.getElementById('latitude').value = gpsData.lat;
+            document.getElementById('longitude').value = gpsData.lng;
+            document.getElementById('accuracy').value = gpsData.acc;
+
+            // 顯示成功（因為 iframe 提交後無法得知結果）
+            const checkType = document.getElementById('checkType').value;
+            const timeStr = document.getElementById('time').value;
+            
+            setTimeout(() => {
+                document.getElementById('successDetail').textContent = `${name} - ${checkType} - ${timeStr}`;
+                document.getElementById('successMsg').classList.add('show');
+                addRecord(checkType, timeStr);
+                document.getElementById('remark').value = '';
+                
+                if (navigator.vibrate) navigator.vibrate(100);
+                
+                // 3秒後隱藏成功訊息
+                setTimeout(() => {
+                    document.getElementById('successMsg').classList.remove('show');
+                }, 3000);
+            }, 500);
+        });
+
+        // ===== QR Code =====
+        let html5QrCode = null;
+        let isScanning = false;
+
+        function toggleQR() {
+            if (isScanning) {
+                if (html5QrCode) html5QrCode.stop().catch(() => {});
+                document.getElementById('qr-reader').style.display = 'none';
+                document.getElementById('qrBtn').classList.remove('active');
+                document.getElementById('qrBtn').textContent = '📷 掃描 QR Code 設定連結';
+                isScanning = false;
+            } else {
+                document.getElementById('qr-reader').style.display = 'block';
+                document.getElementById('qrBtn').classList.add('active');
+                document.getElementById('qrBtn').textContent = '❌ 關閉掃描';
+                isScanning = true;
+
+                html5QrCode = new Html5Qrcode("qr-reader");
+                html5QrCode.start(
+                    { facingMode: "environment" },
+                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    (text) => {
+                        if (text.includes('script.google.com')) {
+                            alert('✅ 掃描成功！\n' + text);
+                            // 可以在這裡更新 WEB_APP_URL
+                        }
+                        toggleQR();
+                    },
+                    () => {}
+                ).catch(err => {
+                    alert('無法開啟相機');
+                    toggleQR();
+                });
+            }
+        }
+    </script>
+</body>
+</html>
