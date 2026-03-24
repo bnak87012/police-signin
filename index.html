@@ -257,7 +257,7 @@
         <div class="header">
             <div class="badge-icon">⭐</div>
             <h1>義警電子簽到</h1>
-            <div class="subtitle">成功派出所</div>
+            <div class="subtitle">成功派出所義警分隊</div>
         </div>
 
         <div class="signin-card">
@@ -288,14 +288,22 @@
                     <input type="text" name="name" id="name" placeholder="請輸入您的姓名" required>
                 </div>
 
-                <div class="form-group readonly">
+                <div class="form-group">
                     <label>職稱</label>
-                    <input type="text" name="rank" id="rank" value="義警" readonly>
+                    <select name="rank" id="rank" required>
+                        <option value="分隊長">分隊長</option>
+                        <option value="副分隊長">副分隊長</option>
+                        <option value="幹事">幹事</option>
+                        <option value="書記">書記</option>
+                        <option value="小隊長">小隊長</option>
+                        <option value="副小隊長">副小隊長</option>
+                        <option value="隊員" selected>隊員</option>
+                    </select>
                 </div>
 
                 <div class="form-group readonly">
                     <label>單位</label>
-                    <input type="text" name="unit" id="unit" value="成功派出所" readonly>
+                    <input type="text" name="unit" id="unit" value="成功派出所義警分隊" readonly>
                 </div>
 
                 <div class="form-group">
@@ -336,7 +344,7 @@
             </div>
         </div>
 
-        <div class="footer">義警電子簽到系統 v3.0</div>
+        <div class="footer">義警電子簽到系統 v4.0 | 成功派出所義警分隊</div>
     </div>
 
     <!-- 隱藏的 iframe 接收表單提交結果 -->
