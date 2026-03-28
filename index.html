@@ -16,9 +16,7 @@
             --text-light: #f8f9fa;
             --danger-red: #c62828;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Noto Sans TC', sans-serif;
             min-height: 100vh;
@@ -28,612 +26,138 @@
             align-items: flex-start;
             padding: 20px;
         }
-
         .container { width: 100%; max-width: 500px; }
-
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
+        .header { text-align: center; margin-bottom: 20px; }
         .badge-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 12px;
+            width: 70px; height: 70px; margin: 0 auto 12px;
             background: linear-gradient(145deg, var(--accent-gold), #b8962e);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
-            font-size: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4); font-size: 32px;
         }
-
-        .header h1 {
-            color: var(--text-light);
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .header .subtitle {
-            color: var(--accent-gold);
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* ===== 分頁標籤 ===== */
-        .tabs {
-            display: flex;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px 15px 0 0;
-            overflow: hidden;
-        }
-
+        .header h1 { color: var(--text-light); font-size: 22px; font-weight: 900; letter-spacing: 2px; }
+        .header .subtitle { color: var(--accent-gold); font-size: 14px; margin-top: 5px; }
+        .tabs { display: flex; background: rgba(255,255,255,0.1); border-radius: 15px 15px 0 0; overflow: hidden; }
         .tab-btn {
-            flex: 1;
-            padding: 14px 10px;
-            background: transparent;
-            border: none;
-            color: rgba(255,255,255,0.6);
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            flex: 1; padding: 14px 10px; background: transparent; border: none;
+            color: rgba(255,255,255,0.6); font-family: inherit; font-size: 14px; font-weight: 700;
+            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 6px;
         }
-
-        .tab-btn.active {
-            background: rgba(255,255,255,0.95);
-            color: var(--primary-blue);
-        }
-
-        .tab-btn:not(.active):hover {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-
-        /* ===== 分頁內容 ===== */
+        .tab-btn.active { background: rgba(255,255,255,0.95); color: var(--primary-blue); }
+        .tab-btn:not(.active):hover { background: rgba(255,255,255,0.2); color: white; }
         .tab-content {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 0 0 20px 20px;
-            padding: 25px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            display: none; background: rgba(255, 255, 255, 0.95);
+            border-radius: 0 0 20px 20px; padding: 25px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* ===== 簽到頁共用樣式 ===== */
+        .tab-content.active { display: block; }
         .time-display {
             background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
+            border-radius: 12px; padding: 15px; margin-bottom: 20px; text-align: center;
         }
-
         .current-date { color: #f5e6b8; font-size: 13px; }
         .current-time { color: var(--text-light); font-size: 34px; font-weight: 900; }
-
         .form-group { margin-bottom: 16px; }
-
-        .form-group label {
-            display: block;
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 6px;
-        }
-
+        .form-group label { display: block; color: var(--text-dark); font-weight: 700; font-size: 13px; margin-bottom: 6px; }
         .form-group label::before { content: '▸ '; color: var(--accent-gold); }
-
         .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 15px;
-            background: #fafafa;
+            width: 100%; padding: 12px 14px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-family: inherit; font-size: 15px; background: #fafafa;
         }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            background: #fff;
-        }
-
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary-blue); background: #fff; }
         .form-group select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a237e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
+            background-repeat: no-repeat; background-position: right 15px center;
         }
-
         .form-group.readonly input { background: #f0f0f0; color: #555; }
-
-        .location-info {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--primary-blue);
-        }
-
+        .location-info { background: #f8f9fa; border-radius: 10px; padding: 12px 15px; margin-bottom: 16px; border-left: 4px solid var(--primary-blue); }
         .location-info .label { color: #666; font-size: 12px; font-weight: 600; }
         .location-info .value { color: var(--text-dark); font-size: 13px; margin-top: 4px; }
-
         .location-status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #666; }
-        .location-status.loading::before {
-            content: '';
-            width: 14px; height: 14px;
-            border: 2px solid #ddd;
-            border-top-color: var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+        .location-status.loading::before { content: ''; width: 14px; height: 14px; border: 2px solid #ddd; border-top-color: var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; }
         .location-status.success { color: var(--success-green); }
         .location-status.success::before { content: '✓'; font-weight: bold; }
         .location-status.error { color: var(--danger-red); }
-
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        .signin-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            color: var(--text-light);
-            border: none;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
+        .signin-btn, .signout-btn {
+            width: 100%; padding: 15px; border: none; border-radius: 12px;
+            font-family: inherit; font-size: 17px; font-weight: 700; letter-spacing: 2px; cursor: pointer;
         }
-
-        .signin-btn:hover { opacity: 0.95; }
-
-        .signout-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #c62828, #8e0000);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-        }
-
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, var(--success-green), #1b5e20);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 15px;
-        }
-
+        .signin-btn { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); color: var(--text-light); }
+        .signout-btn { background: linear-gradient(135deg, #c62828, #8e0000); color: white; }
+        .success-message { display: none; background: linear-gradient(135deg, var(--success-green), #1b5e20); color: white; padding: 15px; border-radius: 12px; text-align: center; margin-top: 15px; }
         .success-message.show { display: block; }
         .success-message h3 { font-size: 16px; margin-bottom: 5px; }
-
-        .records-section {
-            margin-top: 18px;
-            padding-top: 15px;
-            border-top: 1px solid #e0e0e0;
-            display: none;
-        }
-
+        .records-section { margin-top: 18px; padding-top: 15px; border-top: 1px solid #e0e0e0; display: none; }
         .records-section.show { display: block; }
         .records-section h4 { font-size: 13px; margin-bottom: 10px; }
         .records-section h4::before { content: '📋 '; }
-
-        .record-item {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-        }
-
+        .record-item { background: #f8f9fa; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; font-size: 13px; }
         .record-item .type { font-weight: 700; color: var(--primary-blue); }
         .record-item .type.signout { color: var(--danger-red); }
-
-        /* ===== 路徑導航頁樣式 ===== */
-        .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .start-point {
-            background: #e3f2fd;
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 18px;
-            border-left: 4px solid var(--primary-blue);
-        }
-
-        .start-point label {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        .start-options {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .start-options button {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .start-options button.active {
-            border-color: var(--primary-blue);
-            background: var(--primary-blue);
-            color: white;
-        }
-
+        .section-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .start-point { background: #e3f2fd; border-radius: 10px; padding: 12px; margin-bottom: 18px; border-left: 4px solid var(--primary-blue); }
+        .start-point label { display: block; font-size: 12px; color: #666; margin-bottom: 8px; }
+        .start-options { display: flex; gap: 8px; margin-bottom: 8px; }
+        .start-options button { flex: 1; padding: 10px; border: 2px solid #ddd; background: white; border-radius: 8px; font-family: inherit; font-size: 12px; cursor: pointer; }
+        .start-options button.active { border-color: var(--primary-blue); background: var(--primary-blue); color: white; }
         .start-input { display: none; margin-top: 10px; }
         .start-input.show { display: block; }
-
-        .gps-status {
-            font-size: 11px;
-            color: #666;
-            margin-top: 6px;
-        }
+        .gps-status { font-size: 11px; color: #666; margin-top: 6px; }
         .gps-status.success { color: var(--success-green); }
         .gps-status.error { color: var(--danger-red); }
-
-        .address-list { margin-bottom: 15px; max-height: 400px; overflow-y: auto; }
-
-        .address-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-        }
-
-        .address-item.starred {
-            background: #fff8e1;
-            border-left: 3px solid var(--accent-gold);
-        }
-
-        .address-item-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .address-item .number {
-            width: 24px;
-            height: 24px;
-            background: var(--primary-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .address-item.starred .number {
-            background: var(--accent-gold);
-        }
-
-        .address-item .address-text {
-            flex: 1;
-            font-size: 12px;
-            word-break: break-all;
-            line-height: 1.4;
-        }
-
-        .address-item .address-text .name {
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .address-item .address-text .addr {
-            color: #666;
-            font-size: 11px;
-        }
-
-        .address-item .map-btn {
-            width: 28px;
-            height: 28px;
-            background: #e8f5e9;
-            color: var(--success-green);
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .address-item .map-btn:hover,
-        .address-item .map-btn.active {
-            background: var(--success-green);
-            color: white;
-        }
-
-        .address-item .delete-btn {
-            width: 28px;
-            height: 28px;
-            background: #ffebee;
-            color: var(--danger-red);
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-
-        .address-item .delete-btn:hover {
-            background: var(--danger-red);
-            color: white;
-        }
-
-        /* 地圖預覽 */
-        .map-preview {
-            margin-top: 10px;
-            border-radius: 10px;
-            overflow: hidden;
-            display: none;
-            border: 2px solid var(--success-green);
-        }
-
-        .map-preview.show {
-            display: block;
-        }
-
-        .map-preview iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-
-        .map-preview-header {
-            background: var(--success-green);
-            color: white;
-            padding: 6px 10px;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .map-type-btns {
-            display: flex;
-            gap: 4px;
-        }
-
-        .map-type-btns button {
-            padding: 3px 8px;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 10px;
-            font-size: 10px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .map-type-btns button.active {
-            background: white;
-            color: var(--success-green);
-        }
-
-        .add-address {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .add-address input {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 13px;
-        }
-
-        .add-address button {
-            padding: 10px 16px;
-            background: var(--success-green);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        /* 預設路線按鈕 */
-        .preset-section {
-            margin-bottom: 15px;
-        }
-
-        .preset-title {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .preset-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--accent-gold), #b8962e);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-bottom: 8px;
-        }
-
-        .preset-btn:hover {
-            opacity: 0.9;
-        }
-
+        .address-list { margin-bottom: 15px; max-height: 350px; overflow-y: auto; }
+        .address-item { background: #f8f9fa; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
+        .address-item.starred { background: #fff8e1; border-left: 3px solid var(--accent-gold); }
+        .address-item-row { display: flex; align-items: center; gap: 8px; }
+        .address-item .number { width: 24px; height: 24px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+        .address-item.starred .number { background: var(--accent-gold); }
+        .address-item .address-text { flex: 1; font-size: 12px; line-height: 1.4; }
+        .address-item .address-text .name { font-weight: 700; color: var(--text-dark); }
+        .address-item .address-text .addr { color: #666; font-size: 11px; }
+        .address-item .map-btn, .address-item .delete-btn { width: 28px; height: 28px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; flex-shrink: 0; }
+        .address-item .map-btn { background: #e8f5e9; color: var(--success-green); }
+        .address-item .map-btn:hover, .address-item .map-btn.active { background: var(--success-green); color: white; }
+        .address-item .delete-btn { background: #ffebee; color: var(--danger-red); font-size: 12px; }
+        .address-item .delete-btn:hover { background: var(--danger-red); color: white; }
+        .map-preview { margin-top: 10px; border-radius: 10px; overflow: hidden; display: none; border: 2px solid var(--success-green); }
+        .map-preview.show { display: block; }
+        .map-preview iframe { width: 100%; height: 200px; border: none; }
+        .map-preview-header { background: var(--success-green); color: white; padding: 6px 10px; font-size: 11px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .map-type-btns { display: flex; gap: 4px; }
+        .map-type-btns button { padding: 3px 8px; border: 1px solid white; background: transparent; color: white; border-radius: 10px; font-size: 10px; cursor: pointer; font-family: inherit; }
+        .map-type-btns button.active { background: white; color: var(--success-green); }
+        .add-address { display: flex; gap: 8px; margin-bottom: 15px; }
+        .add-address input { flex: 1; padding: 10px; border: 2px solid #e0e0e0; border-radius: 10px; font-family: inherit; font-size: 13px; }
+        .add-address button { padding: 10px 16px; background: var(--success-green); color: white; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
+        .preset-section { margin-bottom: 15px; }
+        .preset-title { font-size: 12px; color: #666; margin-bottom: 8px; }
+        .preset-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent-gold), #b8962e); color: white; border: none; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+        .optimize-info { background: #e8f5e9; border-radius: 8px; padding: 10px 12px; margin-bottom: 15px; font-size: 12px; color: var(--success-green); display: none; }
+        .optimize-info.show { display: block; }
+        .optimize-info strong { display: block; margin-bottom: 3px; }
         .quick-add { margin-bottom: 15px; }
         .quick-add-title { font-size: 12px; color: #666; margin-bottom: 8px; }
-
-        .quick-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            max-height: 120px;
-            overflow-y: auto;
-        }
-
-        .quick-buttons button {
-            padding: 5px 10px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 10px;
-            cursor: pointer;
-        }
-
-        .quick-buttons button:hover {
-            background: var(--primary-blue);
-            color: white;
-            border-color: var(--primary-blue);
-        }
-
-        .quick-buttons button.star {
-            border-color: var(--accent-gold);
-            background: #fff8e1;
-        }
-
-        .quick-buttons button.star:hover {
-            background: var(--accent-gold);
-            color: white;
-        }
-
-        .nav-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .nav-btn {
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .nav-btn.google {
-            background: linear-gradient(135deg, #4285f4, #34a853);
-            color: white;
-        }
-
-        .nav-btn.waze {
-            background: linear-gradient(135deg, #33ccff, #00b8d4);
-            color: white;
-        }
-
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .action-btns {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .clear-btn {
-            flex: 1;
-            padding: 10px;
-            background: #f5f5f5;
-            color: #666;
-            border: none;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .clear-btn:hover {
-            background: #ffebee;
-            color: var(--danger-red);
-        }
-
-        .empty-list {
-            text-align: center;
-            color: #999;
-            padding: 20px;
-            font-size: 13px;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            color: rgba(255,255,255,0.5);
-            font-size: 11px;
-        }
-
-        .route-count {
-            background: var(--primary-blue);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
-            margin-left: 5px;
-        }
-
-        @media (max-width: 480px) {
-            .header h1 { font-size: 20px; }
-            .current-time { font-size: 30px; }
-            .tab-btn { font-size: 13px; padding: 12px 8px; }
-        }
+        .quick-buttons { display: flex; flex-wrap: wrap; gap: 5px; max-height: 100px; overflow-y: auto; }
+        .quick-buttons button { padding: 5px 10px; background: #fff; border: 1px solid #ddd; border-radius: 12px; font-family: inherit; font-size: 10px; cursor: pointer; }
+        .quick-buttons button:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .quick-buttons button.star { border-color: var(--accent-gold); background: #fff8e1; }
+        .quick-buttons button.star:hover { background: var(--accent-gold); color: white; }
+        .nav-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .nav-btn { padding: 14px; border: none; border-radius: 10px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .nav-btn.google { background: linear-gradient(135deg, #4285f4, #34a853); color: white; }
+        .nav-btn.waze { background: linear-gradient(135deg, #33ccff, #00b8d4); color: white; }
+        .nav-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .action-btns { display: flex; gap: 8px; margin-top: 12px; }
+        .action-btn { flex: 1; padding: 10px; background: #f5f5f5; color: #666; border: none; border-radius: 8px; font-family: inherit; font-size: 11px; cursor: pointer; }
+        .action-btn:hover { background: #e0e0e0; }
+        .action-btn.danger:hover { background: #ffebee; color: var(--danger-red); }
+        .action-btn.primary { background: #e3f2fd; color: var(--primary-blue); }
+        .action-btn.primary:hover { background: var(--primary-blue); color: white; }
+        .empty-list { text-align: center; color: #999; padding: 20px; font-size: 13px; }
+        .footer { text-align: center; margin-top: 20px; color: rgba(255,255,255,0.5); font-size: 11px; }
+        .route-count { background: var(--primary-blue); color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-left: 5px; }
+        .distance-badge { background: var(--success-green); color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; margin-left: auto; }
+        @media (max-width: 480px) { .header h1 { font-size: 20px; } .current-time { font-size: 30px; } .tab-btn { font-size: 13px; padding: 12px 8px; } }
     </style>
 </head>
 <body>
@@ -643,24 +167,15 @@
             <h1>義警分隊系統</h1>
             <div class="subtitle">成功派出所義警分隊</div>
         </div>
-
-        <!-- 分頁標籤 -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('signin')">
-                ✍️ 電子簽到
-            </button>
-            <button class="tab-btn" onclick="switchTab('route')">
-                🗺️ 路徑導航
-            </button>
+            <button class="tab-btn active" onclick="switchTab('signin')">✍️ 電子簽到</button>
+            <button class="tab-btn" onclick="switchTab('route')">🗺️ 路徑導航</button>
         </div>
-
-        <!-- ===== 簽到頁面 ===== -->
         <div class="tab-content active" id="signinTab">
             <div class="time-display">
                 <div class="current-date" id="currentDate">載入中...</div>
                 <div class="current-time" id="currentTime">--:--:--</div>
             </div>
-
             <form id="signinForm" target="submitFrame" method="POST" action="">
                 <input type="hidden" name="timestamp" id="timestamp">
                 <input type="hidden" name="date" id="date">
@@ -668,12 +183,10 @@
                 <input type="hidden" name="latitude" id="latitude">
                 <input type="hidden" name="longitude" id="longitude">
                 <input type="hidden" name="accuracy" id="accuracy">
-
                 <div class="form-group">
                     <label>姓名</label>
                     <input type="text" name="name" id="name" placeholder="請輸入您的姓名" required>
                 </div>
-
                 <div class="form-group">
                     <label>職稱</label>
                     <select name="rank" id="rank" required>
@@ -686,12 +199,10 @@
                         <option value="隊員" selected>隊員</option>
                     </select>
                 </div>
-
                 <div class="form-group readonly">
                     <label>單位</label>
                     <input type="text" name="unit" id="unit" value="成功派出所義警分隊" readonly>
                 </div>
-
                 <div class="form-group">
                     <label>簽到類型</label>
                     <select name="checkType" id="checkType" required>
@@ -703,40 +214,26 @@
                         <option value="訓練簽到">訓練簽到</option>
                     </select>
                 </div>
-
                 <div class="location-info">
                     <div class="label">📍 GPS 定位</div>
                     <div class="location-status loading" id="locationStatus">正在取得位置...</div>
                     <div class="value" id="locationValue" style="display:none;"></div>
                 </div>
-
                 <div class="form-group">
                     <label>備註（可掃描 QR Code）</label>
                     <div style="display: flex; gap: 8px;">
-                        <input type="text" name="remark" id="remark" placeholder="選填，或掃描 QR Code" style="flex: 1;">
+                        <input type="text" name="remark" id="remark" placeholder="選填" style="flex: 1;">
                         <button type="button" onclick="toggleQR()" id="qrBtn" style="padding: 12px 16px; background: linear-gradient(135deg, #00695c, #004d40); color: white; border: none; border-radius: 10px; font-size: 18px; cursor: pointer;">📷</button>
                     </div>
                     <div id="qr-reader" style="margin-top: 10px; display: none;"></div>
                 </div>
-
                 <button type="submit" class="signin-btn" id="signinBtn">立即簽到</button>
                 <button type="submit" class="signout-btn" id="signoutBtn" style="display:none;">確認簽退</button>
             </form>
-
-            <div class="success-message" id="successMsg">
-                <h3>✓ 簽到成功</h3>
-                <p id="successDetail"></p>
-            </div>
-
-            <div class="records-section" id="recordsSection">
-                <h4>本次記錄</h4>
-                <div id="recordsList"></div>
-            </div>
+            <div class="success-message" id="successMsg"><h3>✓ 簽到成功</h3><p id="successDetail"></p></div>
+            <div class="records-section" id="recordsSection"><h4>本次記錄</h4><div id="recordsList"></div></div>
         </div>
-
-        <!-- ===== 路徑導航頁面 ===== -->
         <div class="tab-content" id="routeTab">
-            <!-- 起點設定 -->
             <div class="start-point">
                 <label>📍 起點設定</label>
                 <div class="start-options">
@@ -748,150 +245,102 @@
                     <input type="text" id="startAddress" placeholder="輸入起點地址">
                 </div>
             </div>
-
-            <!-- 預設路線 -->
             <div class="preset-section">
                 <div class="preset-title">🚔 大里霧峰巡邏路線</div>
-                <button class="preset-btn" onclick="loadPresetRoute()">
-                    📋 載入完整巡邏路線（21站）
-                </button>
+                <button class="preset-btn" onclick="loadPresetRoute()">📋 載入並自動優化路線（21站）</button>
             </div>
-
-            <!-- 目的地列表 -->
+            <div class="optimize-info" id="optimizeInfo">
+                <strong>✅ 路徑已優化</strong>
+                <span id="optimizeDetail">使用最近鄰演算法計算最短路徑</span>
+            </div>
             <div class="section-title">
                 📋 目的地列表 <span class="route-count" id="routeCount">0</span>
-                <span style="font-size:11px; color:#666; margin-left:auto;">點 🛰️ 看空拍</span>
+                <span class="distance-badge" id="totalDistance" style="display:none;">≈ 0 km</span>
             </div>
-            <div class="address-list" id="addressList">
-                <div class="empty-list">尚未新增任何目的地<br>點擊上方載入巡邏路線</div>
-            </div>
-
-            <!-- 新增地址 -->
+            <div class="address-list" id="addressList"><div class="empty-list">尚未新增任何目的地<br>點擊上方載入巡邏路線</div></div>
             <div class="add-address">
                 <input type="text" id="newAddress" placeholder="自訂新增地址" onkeypress="if(event.key==='Enter')addAddress()">
                 <button onclick="addAddress()">＋</button>
             </div>
-
-            <!-- 快速新增 -->
             <div class="quick-add">
                 <div class="quick-add-title">⚡ 快速新增單站（🌟重點站）</div>
                 <div class="quick-buttons" id="quickButtons"></div>
             </div>
-
-            <!-- 導航按鈕 -->
             <div class="nav-buttons">
-                <button class="nav-btn google" onclick="openGoogleMaps()" id="googleBtn" disabled>
-                    🗺️ Google Maps 導航
-                </button>
-                <button class="nav-btn waze" onclick="openWaze()" id="wazeBtn" disabled>
-                    🚗 Waze 導航
-                </button>
+                <button class="nav-btn google" onclick="openGoogleMaps()" id="googleBtn" disabled>🗺️ Google Maps 導航</button>
+                <button class="nav-btn waze" onclick="openWaze()" id="wazeBtn" disabled>🚗 Waze 導航</button>
             </div>
-
             <div class="action-btns">
-                <button class="clear-btn" onclick="clearAll()">🗑️ 清除全部</button>
-                <button class="clear-btn" onclick="reverseRoute()">🔄 反轉順序</button>
+                <button class="action-btn danger" onclick="clearAll()">🗑️ 清除</button>
+                <button class="action-btn" onclick="reverseRoute()">🔄 反轉</button>
+                <button class="action-btn primary" onclick="reOptimize()">🧭 重新優化</button>
             </div>
         </div>
-
-        <div class="footer">義警分隊系統 v5.0 | 成功派出所義警分隊</div>
+        <div class="footer">義警分隊系統 v5.1 | 成功派出所義警分隊</div>
     </div>
-
     <iframe name="submitFrame" id="submitFrame" style="display:none;"></iframe>
-
     <script>
-        // ==================== 預設巡邏路線 ====================
         const PRESET_ROUTES = [
-            { name: '隊部三賢宮', addr: '台中市大里區忠孝路51號', star: false },
-            { name: '佳新帆布', addr: '台中市大里區大鋒路213號', star: false },
-            { name: '國鵬國際有限公司', addr: '台中市大里區草溪西路320號', star: true },
-            { name: '呈欣環保行', addr: '台中市大里區草提路265巷17號', star: false },
-            { name: '鑫耀順企業有限公司住家', addr: '台中市大里區草湖路109號', star: true },
-            { name: '大洋環保', addr: '台中市大里區成功路88巷28號', star: true },
-            { name: '啟益堂蔘藥行', addr: '台中市大里區成功路420號', star: false },
-            { name: '登鋐科技', addr: '台中市大里區仁美路35巷7號', star: true },
-            { name: '夜市聯誼會', addr: '台中市大里區仁美路35巷8號', star: true },
-            { name: '綠第亞幼兒園', addr: '台中市大里區仁愛路160巷16號', star: false },
-            { name: '張芬郁議員顧問-仁化診所', addr: '台中市大里區仁化路534號', star: false },
-            { name: '尚食在餐廳', addr: '台中市大里區至善路202-2號', star: false },
-            { name: '林宏泉顧問', addr: '台中市大里區四維街6號', star: false },
-            { name: '許振芳製香舖', addr: '台中市大里區塗城路842號', star: false },
-            { name: '勝安慈惠堂', addr: '台中市大里區中興路一段大明巷10號', star: false },
-            { name: '機場接送、旅遊包車住家', addr: '台中市大里區金城街171號', star: true },
-            { name: '四海豆漿', addr: '台中市大里區塗城路711號', star: false },
-            { name: '青陽水果', addr: '台中市大里區塗城路695號', star: false },
-            { name: '榮昌機械住家', addr: '台中市大里區向學路16巷20號', star: false },
-            { name: '頂竹圍土地公廟', addr: '台中市大里區向學一路41號旁', star: false },
-            { name: '臻旺咖啡', addr: '台中市大里區向學一路106號', star: false }
+            { name: '隊部三賢宮', addr: '台中市大里區忠孝路51號', star: false, lat: 24.1052, lng: 120.6785 },
+            { name: '佳新帆布', addr: '台中市大里區大鋒路213號', star: false, lat: 24.1035, lng: 120.6812 },
+            { name: '國鵬國際有限公司', addr: '台中市大里區草溪西路320號', star: true, lat: 24.0892, lng: 120.6823 },
+            { name: '呈欣環保行', addr: '台中市大里區草提路265巷17號', star: false, lat: 24.0915, lng: 120.6798 },
+            { name: '鑫耀順企業有限公司住家', addr: '台中市大里區草湖路109號', star: true, lat: 24.0878, lng: 120.6756 },
+            { name: '大洋環保', addr: '台中市大里區成功路88巷28號', star: true, lat: 24.0945, lng: 120.6712 },
+            { name: '啟益堂蔘藥行', addr: '台中市大里區成功路420號', star: false, lat: 24.0982, lng: 120.6695 },
+            { name: '登鋐科技', addr: '台中市大里區仁美路35巷7號', star: true, lat: 24.0998, lng: 120.6658 },
+            { name: '夜市聯誼會', addr: '台中市大里區仁美路35巷8號', star: true, lat: 24.0996, lng: 120.6655 },
+            { name: '綠第亞幼兒園', addr: '台中市大里區仁愛路160巷16號', star: false, lat: 24.1015, lng: 120.6632 },
+            { name: '張芬郁議員顧問-仁化診所', addr: '台中市大里區仁化路534號', star: false, lat: 24.1028, lng: 120.6608 },
+            { name: '尚食在餐廳', addr: '台中市大里區至善路202-2號', star: false, lat: 24.1045, lng: 120.6578 },
+            { name: '林宏泉顧問', addr: '台中市大里區四維街6號', star: false, lat: 24.1068, lng: 120.6552 },
+            { name: '許振芳製香舖', addr: '台中市大里區塗城路842號', star: false, lat: 24.1085, lng: 120.6625 },
+            { name: '勝安慈惠堂', addr: '台中市大里區中興路一段大明巷10號', star: false, lat: 24.1125, lng: 120.6685 },
+            { name: '機場接送、旅遊包車住家', addr: '台中市大里區金城街171號', star: true, lat: 24.1095, lng: 120.6542 },
+            { name: '四海豆漿', addr: '台中市大里區塗城路711號', star: false, lat: 24.1072, lng: 120.6598 },
+            { name: '青陽水果', addr: '台中市大里區塗城路695號', star: false, lat: 24.1065, lng: 120.6592 },
+            { name: '榮昌機械住家', addr: '台中市大里區向學路16巷20號', star: false, lat: 24.1008, lng: 120.6512 },
+            { name: '頂竹圍土地公廟', addr: '台中市大里區向學一路41號旁', star: false, lat: 24.0985, lng: 120.6485 },
+            { name: '臻旺咖啡', addr: '台中市大里區向學一路106號', star: false, lat: 24.0968, lng: 120.6465 }
         ];
 
-        // ==================== 分頁切換 ====================
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', (i === 0 && tabName === 'signin') || (i === 1 && tabName === 'route'));
-            });
-            
+            document.querySelectorAll('.tab-btn').forEach((btn, i) => btn.classList.toggle('active', (i === 0 && tabName === 'signin') || (i === 1 && tabName === 'route')));
             document.getElementById('signinTab').classList.toggle('active', tabName === 'signin');
             document.getElementById('routeTab').classList.toggle('active', tabName === 'route');
-
-            if (tabName === 'route') {
-                getRouteGPS();
-                renderQuickButtons();
-            }
+            if (tabName === 'route') { getRouteGPS(); renderQuickButtons(); }
         }
 
-        // ==================== 簽到功能 ====================
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycby81LEU2VkjbP42cvD_hXd7b7V_M6W2Bxo6TfrmDl9KgQvMaYTbDfn0zNlqmiFuJVdO/exec';
         document.getElementById('signinForm').action = WEB_APP_URL;
 
         function updateTime() {
             const now = new Date();
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-TW', {
-                year: 'numeric', month: 'long', day: 'numeric', weekday: 'long'
-            });
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
             document.getElementById('currentTime').textContent = now.toLocaleTimeString('zh-TW', { hour12: false });
         }
-        updateTime();
-        setInterval(updateTime, 1000);
+        updateTime(); setInterval(updateTime, 1000);
 
         let gpsData = { lat: '', lng: '', acc: '' };
-
         function getLocation() {
-            const status = document.getElementById('locationStatus');
-            const value = document.getElementById('locationValue');
-
-            if (!navigator.geolocation) {
-                status.className = 'location-status error';
-                status.textContent = '不支援定位';
-                return;
-            }
-
+            const status = document.getElementById('locationStatus'), value = document.getElementById('locationValue');
+            if (!navigator.geolocation) { status.className = 'location-status error'; status.textContent = '不支援定位'; return; }
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                    gpsData.lat = pos.coords.latitude;
-                    gpsData.lng = pos.coords.longitude;
-                    gpsData.acc = Math.round(pos.coords.accuracy);
-                    
-                    status.className = 'location-status success';
-                    status.textContent = '定位成功';
-                    value.style.display = 'block';
-                    value.textContent = `${gpsData.lat.toFixed(6)}, ${gpsData.lng.toFixed(6)}`;
-
+                    gpsData.lat = pos.coords.latitude; gpsData.lng = pos.coords.longitude; gpsData.acc = Math.round(pos.coords.accuracy);
+                    status.className = 'location-status success'; status.textContent = '定位成功';
+                    value.style.display = 'block'; value.textContent = `${gpsData.lat.toFixed(6)}, ${gpsData.lng.toFixed(6)}`;
                     routePosition = { lat: gpsData.lat, lng: gpsData.lng };
-                    document.getElementById('routeGpsStatus').textContent = `✅ 已取得位置`;
+                    document.getElementById('routeGpsStatus').textContent = '✅ 已取得位置';
                     document.getElementById('routeGpsStatus').className = 'gps-status success';
                 },
-                () => {
-                    status.className = 'location-status error';
-                    status.textContent = '定位失敗（不影響簽到）';
-                },
+                () => { status.className = 'location-status error'; status.textContent = '定位失敗（不影響簽到）'; },
                 { enableHighAccuracy: true, timeout: 10000 }
             );
         }
         getLocation();
 
-        const savedName = localStorage.getItem('userName');
-        const savedRank = localStorage.getItem('userRank');
+        const savedName = localStorage.getItem('userName'), savedRank = localStorage.getItem('userRank');
         if (savedName) document.getElementById('name').value = savedName;
         if (savedRank) document.getElementById('rank').value = savedRank;
 
@@ -904,28 +353,14 @@
         let records = [];
         function addRecord(type, time) {
             records.unshift({ type, time });
-            const section = document.getElementById('recordsSection');
-            const list = document.getElementById('recordsList');
-            section.classList.add('show');
-            list.innerHTML = records.map(r => `
-                <div class="record-item">
-                    <span class="type ${r.type.includes('簽退') ? 'signout' : ''}">${r.type}</span>
-                    <span class="time">${r.time}</span>
-                </div>
-            `).join('');
+            document.getElementById('recordsSection').classList.add('show');
+            document.getElementById('recordsList').innerHTML = records.map(r => `<div class="record-item"><span class="type ${r.type.includes('簽退') ? 'signout' : ''}">${r.type}</span><span class="time">${r.time}</span></div>`).join('');
         }
 
         document.getElementById('signinForm').addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();
-            if (!name) {
-                e.preventDefault();
-                alert('請輸入姓名');
-                return;
-            }
-
-            localStorage.setItem('userName', name);
-            localStorage.setItem('userRank', document.getElementById('rank').value);
-
+            if (!name) { e.preventDefault(); alert('請輸入姓名'); return; }
+            localStorage.setItem('userName', name); localStorage.setItem('userRank', document.getElementById('rank').value);
             const now = new Date();
             document.getElementById('timestamp').value = now.toISOString();
             document.getElementById('date').value = now.toLocaleDateString('zh-TW');
@@ -933,87 +368,43 @@
             document.getElementById('latitude').value = gpsData.lat;
             document.getElementById('longitude').value = gpsData.lng;
             document.getElementById('accuracy').value = gpsData.acc;
-
-            const checkType = document.getElementById('checkType').value;
-            const timeStr = document.getElementById('time').value;
-            
+            const checkType = document.getElementById('checkType').value, timeStr = document.getElementById('time').value;
             setTimeout(() => {
                 document.getElementById('successDetail').textContent = `${name} - ${checkType} - ${timeStr}`;
                 document.getElementById('successMsg').classList.add('show');
-                addRecord(checkType, timeStr);
-                document.getElementById('remark').value = '';
+                addRecord(checkType, timeStr); document.getElementById('remark').value = '';
                 if (navigator.vibrate) navigator.vibrate(100);
-                setTimeout(() => {
-                    document.getElementById('successMsg').classList.remove('show');
-                }, 3000);
+                setTimeout(() => document.getElementById('successMsg').classList.remove('show'), 3000);
             }, 500);
         });
 
-        let html5QrCode = null;
-        let isScanning = false;
-
+        let html5QrCode = null, isScanning = false;
         function toggleQR() {
             if (isScanning) {
                 if (html5QrCode) html5QrCode.stop().catch(() => {});
                 document.getElementById('qr-reader').style.display = 'none';
                 document.getElementById('qrBtn').style.background = 'linear-gradient(135deg, #00695c, #004d40)';
-                document.getElementById('qrBtn').textContent = '📷';
-                isScanning = false;
+                document.getElementById('qrBtn').textContent = '📷'; isScanning = false;
             } else {
                 document.getElementById('qr-reader').style.display = 'block';
                 document.getElementById('qrBtn').style.background = 'linear-gradient(135deg, #c62828, #8e0000)';
-                document.getElementById('qrBtn').textContent = '❌';
-                isScanning = true;
-
+                document.getElementById('qrBtn').textContent = '❌'; isScanning = true;
                 html5QrCode = new Html5Qrcode("qr-reader");
-                html5QrCode.start(
-                    { facingMode: "environment" },
-                    { fps: 10, qrbox: { width: 250, height: 250 } },
-                    (text) => {
-                        document.getElementById('remark').value = text;
-                        if (navigator.vibrate) navigator.vibrate(200);
-                        toggleQR();
-                    },
-                    () => {}
-                ).catch(err => {
-                    alert('無法開啟相機');
-                    toggleQR();
-                });
+                html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } },
+                    (text) => { document.getElementById('remark').value = text; if (navigator.vibrate) navigator.vibrate(200); toggleQR(); }, () => {}
+                ).catch(() => { alert('無法開啟相機'); toggleQR(); });
             }
         }
 
-        // ==================== 路徑導航功能 ====================
-        let addresses = [];
-        let routePosition = null;
-        let startType = 'gps';
-        let activeMapIndex = -1;
-        let currentMapType = 'satellite';
+        let addresses = [], routePosition = null, startType = 'gps', activeMapIndex = -1, currentMapType = 'satellite';
 
         function getRouteGPS() {
             const status = document.getElementById('routeGpsStatus');
-            
-            if (routePosition) {
-                status.textContent = `✅ 已取得位置`;
-                status.className = 'gps-status success';
-                return;
-            }
-
-            if (!navigator.geolocation) {
-                status.textContent = '❌ 不支援 GPS';
-                status.className = 'gps-status error';
-                return;
-            }
-
+            if (routePosition) { status.textContent = '✅ 已取得位置'; status.className = 'gps-status success'; return; }
+            if (!navigator.geolocation) { status.textContent = '❌ 不支援GPS，使用隊部為起點'; status.className = 'gps-status error'; routePosition = { lat: 24.1052, lng: 120.6785 }; return; }
             navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    routePosition = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-                    status.textContent = `✅ 已取得位置`;
-                    status.className = 'gps-status success';
-                },
-                () => {
-                    status.textContent = '❌ 無法取得 GPS';
-                    status.className = 'gps-status error';
-                },
+                (pos) => { routePosition = { lat: pos.coords.latitude, lng: pos.coords.longitude }; status.textContent = '✅ 已取得位置'; status.className = 'gps-status success'; },
+                () => { status.textContent = '❌ 無法取得GPS，使用隊部為起點'; status.className = 'gps-status error'; routePosition = { lat: 24.1052, lng: 120.6785 }; },
                 { enableHighAccuracy: true, timeout: 10000 }
             );
         }
@@ -1026,197 +417,152 @@
             document.getElementById('routeGpsStatus').style.display = type === 'gps' ? 'block' : 'none';
         }
 
-        function loadPresetRoute() {
-            if (addresses.length > 0) {
-                if (!confirm('確定要載入預設路線嗎？\n將會取代目前的列表。')) return;
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371, dLat = (lat2 - lat1) * Math.PI / 180, dLng = (lng2 - lng1) * Math.PI / 180;
+            const a = Math.sin(dLat/2)**2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng/2)**2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        }
+
+        function optimizeRoute(points, startLat, startLng) {
+            if (points.length <= 1) return points;
+            const remaining = [...points], optimized = [];
+            let currentLat = startLat, currentLng = startLng;
+            while (remaining.length > 0) {
+                let nearestIdx = 0, nearestDist = Infinity;
+                for (let i = 0; i < remaining.length; i++) {
+                    const dist = calculateDistance(currentLat, currentLng, remaining[i].lat, remaining[i].lng);
+                    if (dist < nearestDist) { nearestDist = dist; nearestIdx = i; }
+                }
+                const nearest = remaining.splice(nearestIdx, 1)[0];
+                optimized.push(nearest);
+                currentLat = nearest.lat; currentLng = nearest.lng;
             }
-            addresses = PRESET_ROUTES.map(r => ({ ...r }));
-            activeMapIndex = -1;
-            renderAddresses();
-            saveAddresses();
+            return optimized;
+        }
+
+        function calculateTotalDistance(points, startLat, startLng) {
+            let total = 0, prevLat = startLat, prevLng = startLng;
+            for (const p of points) { total += calculateDistance(prevLat, prevLng, p.lat, p.lng); prevLat = p.lat; prevLng = p.lng; }
+            return total;
+        }
+
+        function loadPresetRoute() {
+            if (addresses.length > 0 && !confirm('確定要載入預設路線嗎？\n將會取代目前的列表並自動優化。')) return;
+            let routes = PRESET_ROUTES.map(r => ({ ...r }));
+            let startLat = routePosition ? routePosition.lat : 24.1052, startLng = routePosition ? routePosition.lng : 120.6785;
+            addresses = optimizeRoute(routes, startLat, startLng);
+            const totalDist = calculateTotalDistance(addresses, startLat, startLng);
+            document.getElementById('optimizeInfo').classList.add('show');
+            document.getElementById('optimizeDetail').textContent = `從起點出發，預估總距離 ${totalDist.toFixed(1)} 公里`;
+            document.getElementById('totalDistance').textContent = `≈ ${totalDist.toFixed(1)} km`;
+            document.getElementById('totalDistance').style.display = 'inline';
+            activeMapIndex = -1; renderAddresses(); saveAddresses();
+        }
+
+        function reOptimize() {
+            if (addresses.length < 2) { alert('至少需要 2 個地點才能優化'); return; }
+            let startLat = routePosition ? routePosition.lat : 24.1052, startLng = routePosition ? routePosition.lng : 120.6785;
+            addresses = optimizeRoute(addresses, startLat, startLng);
+            const totalDist = calculateTotalDistance(addresses, startLat, startLng);
+            document.getElementById('optimizeInfo').classList.add('show');
+            document.getElementById('optimizeDetail').textContent = `已重新優化！預估總距離 ${totalDist.toFixed(1)} 公里`;
+            document.getElementById('totalDistance').textContent = `≈ ${totalDist.toFixed(1)} km`;
+            document.getElementById('totalDistance').style.display = 'inline';
+            activeMapIndex = -1; renderAddresses(); saveAddresses();
         }
 
         function renderQuickButtons() {
-            const container = document.getElementById('quickButtons');
-            container.innerHTML = PRESET_ROUTES.map((r, i) => `
-                <button class="${r.star ? 'star' : ''}" onclick="addQuickAddress(${i})">
-                    ${r.star ? '🌟' : ''}${i+1}.${r.name}
-                </button>
-            `).join('');
+            document.getElementById('quickButtons').innerHTML = PRESET_ROUTES.map((r, i) => `<button class="${r.star ? 'star' : ''}" onclick="addQuickAddress(${i})">${r.star ? '🌟' : ''}${r.name.substring(0,4)}</button>`).join('');
         }
 
         function addAddress() {
-            const input = document.getElementById('newAddress');
-            const address = input.value.trim();
-            
+            const input = document.getElementById('newAddress'), address = input.value.trim();
             if (!address) return;
-            if (addresses.length >= 25) {
-                alert('最多 25 個目的地');
-                return;
-            }
-
-            addresses.push({ name: address, addr: address, star: false });
-            input.value = '';
-            renderAddresses();
-            saveAddresses();
+            if (addresses.length >= 25) { alert('最多 25 個目的地'); return; }
+            addresses.push({ name: address, addr: address, star: false, lat: 24.1, lng: 120.67 });
+            input.value = ''; renderAddresses(); saveAddresses();
         }
 
         function addQuickAddress(index) {
             const route = PRESET_ROUTES[index];
-            const exists = addresses.some(a => a.addr === route.addr);
-            if (exists) {
-                alert('此站點已在列表中');
-                return;
-            }
-            if (addresses.length >= 25) {
-                alert('最多 25 個目的地');
-                return;
-            }
-            addresses.push({ ...route });
-            renderAddresses();
-            saveAddresses();
+            if (addresses.some(a => a.addr === route.addr)) { alert('此站點已在列表中'); return; }
+            if (addresses.length >= 25) { alert('最多 25 個目的地'); return; }
+            addresses.push({ ...route }); renderAddresses(); saveAddresses();
         }
 
         function deleteAddress(index) {
             addresses.splice(index, 1);
             if (activeMapIndex === index) activeMapIndex = -1;
             else if (activeMapIndex > index) activeMapIndex--;
-            renderAddresses();
-            saveAddresses();
+            renderAddresses(); saveAddresses();
         }
 
-        function toggleMap(index) {
-            if (activeMapIndex === index) {
-                activeMapIndex = -1;
-            } else {
-                activeMapIndex = index;
-                currentMapType = 'satellite';
-            }
-            renderAddresses();
-        }
-
-        function setMapType(type) {
-            currentMapType = type;
-            renderAddresses();
-        }
-
-        function getMapUrl(address, type) {
-            const encoded = encodeURIComponent(address);
-            const mapTypeParam = type === 'satellite' ? 'k' : 'm';
-            return `https://maps.google.com/maps?q=${encoded}&t=${mapTypeParam}&z=18&output=embed`;
-        }
+        function toggleMap(index) { activeMapIndex = activeMapIndex === index ? -1 : index; currentMapType = 'satellite'; renderAddresses(); }
+        function setMapType(type) { currentMapType = type; renderAddresses(); }
+        function getMapUrl(address, type) { return `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=${type === 'satellite' ? 'k' : 'm'}&z=18&output=embed`; }
 
         function renderAddresses() {
-            const list = document.getElementById('addressList');
-            const hasAddr = addresses.length > 0;
-            
+            const list = document.getElementById('addressList'), hasAddr = addresses.length > 0;
             document.getElementById('googleBtn').disabled = !hasAddr;
             document.getElementById('wazeBtn').disabled = !hasAddr;
             document.getElementById('routeCount').textContent = addresses.length;
-
             if (!hasAddr) {
                 list.innerHTML = '<div class="empty-list">尚未新增任何目的地<br>點擊上方載入巡邏路線</div>';
+                document.getElementById('totalDistance').style.display = 'none';
+                document.getElementById('optimizeInfo').classList.remove('show');
                 return;
             }
-
             list.innerHTML = addresses.map((item, i) => {
-                const isActive = activeMapIndex === i;
-                const isSatellite = currentMapType === 'satellite';
-                
-                return `
-                <div class="address-item ${item.star ? 'starred' : ''}">
+                const isActive = activeMapIndex === i, isSatellite = currentMapType === 'satellite';
+                return `<div class="address-item ${item.star ? 'starred' : ''}">
                     <div class="address-item-row">
                         <div class="number">${i + 1}</div>
-                        <div class="address-text">
-                            <div class="name">${item.star ? '🌟' : ''}${item.name}</div>
-                            <div class="addr">${item.addr}</div>
-                        </div>
-                        <button class="map-btn ${isActive ? 'active' : ''}" onclick="toggleMap(${i})" title="查看空拍地圖">🛰️</button>
+                        <div class="address-text"><div class="name">${item.star ? '🌟' : ''}${item.name}</div><div class="addr">${item.addr}</div></div>
+                        <button class="map-btn ${isActive ? 'active' : ''}" onclick="toggleMap(${i})">🛰️</button>
                         <button class="delete-btn" onclick="deleteAddress(${i})">✕</button>
                     </div>
-                    ${isActive ? `
-                    <div class="map-preview show">
-                        <div class="map-preview-header">
-                            <span>📍 ${item.name}</span>
-                            <div class="map-type-btns">
-                                <button class="${isSatellite ? 'active' : ''}" onclick="setMapType('satellite')">🛰️衛星</button>
-                                <button class="${!isSatellite ? 'active' : ''}" onclick="setMapType('roadmap')">🗺️地圖</button>
-                            </div>
-                        </div>
-                        <iframe src="${getMapUrl(item.addr, currentMapType)}" loading="lazy"></iframe>
-                    </div>
-                    ` : ''}
-                </div>
-            `}).join('');
+                    ${isActive ? `<div class="map-preview show"><div class="map-preview-header"><span>📍 ${item.name}</span><div class="map-type-btns"><button class="${isSatellite ? 'active' : ''}" onclick="setMapType('satellite')">🛰️</button><button class="${!isSatellite ? 'active' : ''}" onclick="setMapType('roadmap')">🗺️</button></div></div><iframe src="${getMapUrl(item.addr, currentMapType)}" loading="lazy"></iframe></div>` : ''}
+                </div>`;
+            }).join('');
         }
 
         function getStartPoint() {
-            if (startType === 'gps' && routePosition) {
-                return `${routePosition.lat},${routePosition.lng}`;
-            }
+            if (startType === 'gps' && routePosition) return `${routePosition.lat},${routePosition.lng}`;
             return document.getElementById('startAddress').value.trim() || '';
         }
 
         function openGoogleMaps() {
             if (addresses.length === 0) return;
-
-            const start = getStartPoint();
-            const destination = addresses[addresses.length - 1].addr;
-            const waypoints = addresses.slice(0, -1).map(a => a.addr);
-
+            const start = getStartPoint(), destination = addresses[addresses.length - 1].addr, waypoints = addresses.slice(0, -1).map(a => a.addr);
             let url = 'https://www.google.com/maps/dir/?api=1';
             if (start) url += `&origin=${encodeURIComponent(start)}`;
             url += `&destination=${encodeURIComponent(destination)}`;
-            if (waypoints.length > 0) {
-                url += `&waypoints=${waypoints.map(w => encodeURIComponent(w)).join('|')}`;
-            }
+            if (waypoints.length > 0) url += `&waypoints=${waypoints.map(w => encodeURIComponent(w)).join('|')}`;
             url += '&travelmode=driving';
-
             window.open(url, '_blank');
         }
 
         function openWaze() {
             if (addresses.length === 0) return;
-            const destination = addresses[0].addr;
-            const url = `https://waze.com/ul?q=${encodeURIComponent(destination)}&navigate=yes`;
-            window.open(url, '_blank');
+            window.open(`https://waze.com/ul?q=${encodeURIComponent(addresses[0].addr)}&navigate=yes`, '_blank');
         }
 
         function reverseRoute() {
             if (addresses.length < 2) return;
-            addresses.reverse();
-            activeMapIndex = -1;
-            renderAddresses();
-            saveAddresses();
+            addresses.reverse(); activeMapIndex = -1; renderAddresses(); saveAddresses();
         }
 
         function clearAll() {
             if (addresses.length === 0) return;
-            if (confirm('確定清除所有地址？')) {
-                addresses = [];
-                activeMapIndex = -1;
-                renderAddresses();
-                saveAddresses();
-            }
+            if (confirm('確定清除所有地址？')) { addresses = []; activeMapIndex = -1; renderAddresses(); saveAddresses(); }
         }
 
-        function saveAddresses() {
-            localStorage.setItem('routeAddresses', JSON.stringify(addresses));
-        }
-
+        function saveAddresses() { localStorage.setItem('routeAddresses', JSON.stringify(addresses)); }
         function loadAddresses() {
             const saved = localStorage.getItem('routeAddresses');
-            if (saved) {
-                try {
-                    addresses = JSON.parse(saved);
-                } catch(e) {
-                    addresses = [];
-                }
-            }
-            renderAddresses();
-            renderQuickButtons();
+            if (saved) { try { addresses = JSON.parse(saved); } catch(e) { addresses = []; } }
+            renderAddresses(); renderQuickButtons();
         }
-
         loadAddresses();
     </script>
 </body>
